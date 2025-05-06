@@ -1,13 +1,10 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { 
-  Boxes, 
-  BarChart3, 
-  Users, 
-  Settings, 
-  LogOut, 
-  Menu, 
-  MessageSquareMore 
+import {
+  Boxes,
+  BarChart3,
+  Menu,
+  MessageSquareMore
 } from "lucide-react";
 
 interface NavLinkProps {
@@ -35,15 +32,20 @@ export default function Sidebar() {
 
   return (
     <div
-      className={`relative h-screen border-r pt-16 bg-white dark:bg-gray-900 transition-all duration-300 ${
-        isCollapsed ? "w-16" : "w-64"
-      }`}
+      className={`relative h-screen border-r pt-16 bg-white dark:bg-gray-900 transition-all duration-300 ${isCollapsed ? "w-16" : "w-64"
+        }`}
     >
+      <div className="absolute top-8 left-8 text-lg font-bold">{
+        isCollapsed ?
+          "" :
+          "Hi John Doe"
+      }
+      </div>
       <div className="absolute right-0 top-6 flex h-6 w-6 -translate-x-1/2 translate-y-2 items-center justify-center rounded-full border bg-white dark:bg-gray-900">
-        <button 
-          className="h-4 w-4 flex items-center justify-center bg-transparent border-none cursor-pointer" 
+        <button
+          className="h-4 w-4 flex items-center justify-center bg-transparent border-none cursor-pointer"
           onClick={toggleSidebar}
-          >
+        >
           <Menu className="h-4 w-4" />
           <span className="sr-only">Toggle Sidebar</span>
         </button>
@@ -72,33 +74,6 @@ export default function Sidebar() {
               isCollapsed={isCollapsed}
               isActive={isActive("/linkedin-message")}
             />
-            <NavLink
-              to="/leads"
-              icon={Users}
-              title="Leads"
-              isCollapsed={isCollapsed}
-              isActive={isActive("/leads")}
-            />
-          </div>
-        </div>
-        <div className="px-3 py-2">
-          <div className="mt-3 space-y-1">
-            <NavLink
-              to="/settings"
-              icon={Settings}
-              title="Settings"
-              isCollapsed={isCollapsed}
-              isActive={isActive("/settings")}
-            />
-            <button 
-              className={`flex items-center rounded-lg px-3 py-2 text-sm transition-all hover:text-blue-600 text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 w-full ${
-                isCollapsed ? "px-2 justify-center" : ""
-              }`}
-              onClick={() => alert("Logout functionality to be implemented")}
-            >
-              <LogOut className="h-4 w-4" />
-              {!isCollapsed && <span className="ml-2 font-medium">Logout</span>}
-            </button>
           </div>
         </div>
       </div>
@@ -111,9 +86,9 @@ function NavLink({ to, icon: Icon, title, isCollapsed, isActive }: NavLinkProps)
     <Link
       to={to}
       className={`flex items-center rounded-lg px-3 py-2 text-sm transition-all hover:text-blue-600 
-      ${isActive 
-        ? "bg-blue-50 dark:bg-gray-800 text-blue-600 shadow-sm" 
-        : "text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800"}
+      ${isActive
+          ? "bg-blue-50 dark:bg-gray-800 text-blue-600 shadow-sm"
+          : "text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800"}
       ${isCollapsed ? "px-2 justify-center" : ""}`}
     >
       <Icon className={`h-4 w-4 ${isActive ? "text-blue-600" : ""}`} />

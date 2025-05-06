@@ -1,0 +1,9 @@
+import React from 'react'
+
+const UseCases = () => {
+  return (
+    <div className='text-2xl font-bold flex items-center justify-center h-screen'>We will be right be back !!</div>
+  )
+}
+
+export default UseCases

@@ -191,7 +191,7 @@ export default function CampaignsList() {
                             <DropdownMenuLabel>Actions</DropdownMenuLabel>
                             <DropdownMenuSeparator />
                             <DropdownMenuItem asChild>
-                              <Link to={`/dashboard/campaigns/${campaign._id}`}>
+                              <Link to={`/dashboard/campaigns/${campaign._id}/edit`}>
                                 <Edit className="mr-2 h-4 w-4" />
                                 Edit
                               </Link>
