@@ -7,6 +7,7 @@ import Campaigns from "@/Dashboard/CampaignsList";
 import LinkedinMessage from "@/Dashboard/LinkedinMessageGenerator";
 import Campaign from "@/Dashboard/CampaignForm";
 import NewCampaign from "@/Dashboard/NewCampaign";
+import Pricing from "@/components/Pricing";
 
 
 const Router = createBrowserRouter([
@@ -17,6 +18,10 @@ const Router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home />,
+            },
+            {
+                path: "/pricing",
+                element: <Pricing />,
             },
             {
                 path: "/dashboard",
@@ -39,7 +44,7 @@ const Router = createBrowserRouter([
                         element: <LinkedinMessage />,
                     },
                     {
-                        path: "/dashboard/campaings/new",
+                        path: "/dashboard/campaigns/new",
                         element: <NewCampaign />,
                     }
                 ]

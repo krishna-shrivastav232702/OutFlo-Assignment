@@ -29,7 +29,6 @@ export default function CampaignForm({ campaignId }: CampaignFormProps) {
   })
 
   useEffect(() => {
-    // If editing an existing campaign, fetch its data
     if (campaignId) {
       setIsLoading(true)
       // This would be an API call in a real application

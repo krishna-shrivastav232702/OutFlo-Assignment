@@ -4,7 +4,6 @@ import {
   Boxes, 
   BarChart3, 
   Users, 
-  FileSpreadsheet, 
   Settings, 
   LogOut, 
   Menu, 
@@ -27,7 +26,6 @@ export default function Sidebar() {
     setIsCollapsed(!isCollapsed);
   };
 
-  // Check if the current path matches or starts with the given path
   const isActive = (path: string): boolean => {
     if (path === "/") {
       return location.pathname === "/";
@@ -45,7 +43,7 @@ export default function Sidebar() {
         <button 
           className="h-4 w-4 flex items-center justify-center bg-transparent border-none cursor-pointer" 
           onClick={toggleSidebar}
-        >
+          >
           <Menu className="h-4 w-4" />
           <span className="sr-only">Toggle Sidebar</span>
         </button>
@@ -80,13 +78,6 @@ export default function Sidebar() {
               title="Leads"
               isCollapsed={isCollapsed}
               isActive={isActive("/leads")}
-            />
-            <NavLink
-              to="/reports"
-              icon={FileSpreadsheet}
-              title="Reports"
-              isCollapsed={isCollapsed}
-              isActive={isActive("/reports")}
             />
           </div>
         </div>

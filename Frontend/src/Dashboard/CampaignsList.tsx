@@ -120,7 +120,7 @@ export default function CampaignsList() {
             />
           </div>
           <Button asChild>
-            <Link to="/campaigns/new">
+            <Link to="/dashboard/campaigns/new">
               <Plus className="mr-2 h-4 w-4" />
               New Campaign
             </Link>
