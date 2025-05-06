@@ -22,7 +22,7 @@ export default function EditCampaignPage() {
     const fetchCampaign = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.get(`http://localhost:8002/campaigns/${id}`);
+        const response = await axios.get(`https://outflo-assignment-production.up.railway.app/campaigns/${id}`);
         setCampaign(response.data);
       } catch (err) {
         setError("Failed to fetch campaign details");

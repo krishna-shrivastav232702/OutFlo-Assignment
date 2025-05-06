@@ -52,7 +52,7 @@ export default function LinkedInMessageGenerator() {
         .filter(([_, value]) => value)
         .map(([key]) => key);
       
-      const response = await axios.post('http://localhost:8002/messages/personalized-message', {
+      const response = await axios.post('https://outflo-assignment-production.up.railway.app/messages/personalized-message', {
         ...profileData,
         tones: selectedTones
       }, {

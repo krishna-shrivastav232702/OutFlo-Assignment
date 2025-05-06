@@ -16,7 +16,7 @@ import { createBrowserRouter } from "react-router-dom";
 
 const campaignLoader = async ({ params }) => {
     try {
-      const response = await axios.get(`http://localhost:8002/campaigns/${params.id}`);
+      const response = await axios.get(`https://outflo-assignment-production.up.railway.app/campaigns/${params.id}`);
       return response.data;
     } catch (error) {
       console.error("Error loading campaign:", error);

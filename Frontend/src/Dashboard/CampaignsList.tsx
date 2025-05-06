@@ -33,7 +33,7 @@ export default function CampaignsList() {
   const fetchCampaigns = async () => {
     try {
       setIsLoading(true)
-      const response = await axios.get<Campaign[]>('http://localhost:8002/campaigns')
+      const response = await axios.get<Campaign[]>('https://outflo-assignment-production.up.railway.app/campaigns')
       setCampaigns(response.data)
     } catch (error) {
       toast.error('Failed to fetch campaigns')
@@ -65,7 +65,7 @@ export default function CampaignsList() {
         )
       )
 
-      await axios.put(`http://localhost:8002/campaigns/${id}`, { status: newStatus })
+      await axios.put(`https://outflo-assignment-production.up.railway.app/campaigns/${id}`, { status: newStatus })
 
       toast.success("Campaign Status Updated", {
         description: `${campaign.name} is now ${newStatus.toLowerCase()}`,
@@ -83,7 +83,7 @@ export default function CampaignsList() {
 
       setCampaigns((prevCampaigns) => prevCampaigns.filter((campaign) => campaign._id !== id))
 
-      await axios.delete(`http://localhost:8002/campaigns/${id}`)
+      await axios.delete(`https://outflo-assignment-production.up.railway.app/campaigns/${id}`)
 
       toast.success("Campaign Deleted", {
         description: `${campaign.name} has been deleted`,

@@ -102,14 +102,14 @@ export default function CampaignForm({ isEditMode = false, initialData, campaign
       
       if (isEditMode) {
         // Update existing campaign
-        response = await axios.put(`http://localhost:8002/campaigns/${campaignId}`, formData, {
+        response = await axios.put(`https://outflo-assignment-production.up.railway.app/campaigns/${campaignId}`, formData, {
           headers: {
             'Content-Type': 'application/json'
           }
         });
       } else {
         // Create new campaign
-        response = await axios.post('http://localhost:8002/campaigns', formData, {
+        response = await axios.post('https://outflo-assignment-production.up.railway.app/campaigns', formData, {
           headers: {
             'Content-Type': 'application/json'
           }
