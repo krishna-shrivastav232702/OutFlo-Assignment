@@ -1,0 +1,1 @@
+{"root":["./src/index.ts","./src/controllers/campaign.controller.ts","./src/controllers/message.controller.ts","./src/db/config.ts","./src/models/campaign.model.ts","./src/routes/campaign.route.ts","./src/routes/message.route.ts","./src/services/ai.ts","./src/types/types.ts"],"version":"5.8.3"}
