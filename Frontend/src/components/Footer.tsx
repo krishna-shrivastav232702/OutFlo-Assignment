@@ -1,13 +1,13 @@
 import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react"
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 
 export default function Footer() {
   return (
     <footer className="bg-gray-900 text-white py-12">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
         <div>
-          <h3 className="text-lg font-semibold mb-4">StreamLine</h3>
-          <p className="text-gray-400">Streamlining your workflow, one task at a time.</p>
+          <h3 className="text-lg font-semibold mb-4">OutFlo</h3>
+          <p className="text-gray-400">AI outreach that drives results.</p>
         </div>
         <div>
           <h4 className="text-lg font-semibold mb-4">Product</h4>
@@ -24,7 +24,7 @@ export default function Footer() {
             </li>
             <li>
               <Link to="#" className="text-gray-400 hover:text-white">
-                Integrations
+                Use Cases
               </Link>
             </li>
           </ul>
@@ -68,7 +68,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="container mx-auto mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
-        <p>&copy; 2025 StreamLine. All rights reserved.</p>
+        <p>&copy; 2025 OutFlo. All rights reserved.</p>
       </div>
     </footer>
   )

@@ -3,19 +3,17 @@ import { Link } from "react-router-dom"
 import { MoonStar, Sun, Bell, Search } from "lucide-react"
 
 export default function DashboardHeader() {
-  const [theme, setTheme] = useState("light") // or get from localStorage/context
+  const [theme, setTheme] = useState("light") 
   
   const toggleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light"
     setTheme(newTheme)
-    // In a real app, you would update the theme in the DOM or context
     document.documentElement.classList.toggle("dark")
   }
 
   return (
     <header className="sticky top-0 z-50 flex h-16 items-center gap-4 border-b bg-white dark:bg-gray-900 px-4 md:px-6">
       <Link to="/" className="flex items-center gap-2">
-        <div className="h-6 w-6 rounded-full bg-blue-600"></div>
         <h1 className="text-xl font-bold tracking-tighter">OutFlo</h1>
       </Link>
       <div className="ml-auto flex items-center gap-4">
@@ -28,16 +26,13 @@ export default function DashboardHeader() {
           />
         </form>
         
-        {/* Notifications dropdown */}
         <div className="relative inline-block text-left">
           <button className="rounded-full p-2 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700">
             <Bell className="h-4 w-4" />
             <span className="sr-only">Toggle notifications</span>
           </button>
-          {/* Dropdown would be implemented here */}
         </div>
         
-        {/* Theme toggle */}
         <button 
           onClick={toggleTheme} 
           className="rounded-full p-2 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 relative"
@@ -47,9 +42,8 @@ export default function DashboardHeader() {
           <span className="sr-only">Toggle theme</span>
         </button>
         
-        {/* User avatar */}
         <button className="rounded-full p-0">
-          <img src="/placeholder.svg?height=32&width=32" alt="Avatar" className="h-8 w-8 rounded-full" />
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Avatar" className="h-8 w-8 rounded-full" />
           <span className="sr-only">Toggle user menu</span>
         </button>
       </div>

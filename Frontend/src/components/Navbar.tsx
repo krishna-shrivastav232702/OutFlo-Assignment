@@ -11,7 +11,7 @@ export default function Navbar() {
               to="/"
               className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
             >
-              huly
+              OutFlo
             </Link>
             <div className="hidden md:block ml-10">
               <div className="flex items-center space-x-8">
@@ -21,19 +21,16 @@ export default function Navbar() {
                 <Link to="/dashboard/u" className="text-sm text-gray-300 hover:text-white">
                   Dashboard
                 </Link>
-                <Link to="/community" className="text-sm text-gray-300 hover:text-white">
-                  Community
+                <Link to="/use-cases" className="text-sm text-gray-300 hover:text-white">
+                  Use Cases
                 </Link>
-                <Link to="/download" className="text-sm text-gray-300 hover:text-white">
-                  Download
+                <Link to="/contact" className="text-sm text-gray-300 hover:text-white">
+                  Contact
                 </Link>
               </div>
             </div>
           </div>
           <div className="flex items-center space-x-4">
-            <Button variant="ghost" className="text-sm">
-              Sign In
-            </Button>
             <Button className="text-sm bg-gradient-to-r from-primary to-accent hover:opacity-90">Get Started</Button>
           </div>
         </div>
