@@ -6,7 +6,7 @@ dotenv.config();
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY || '';
 
-export async function generatePersonalizedMessage(profile: LinkedInProfile): Promise<string> {
+export async function generatePersonalizedMessage(profile: LinkedInProfile & {tones:string[]}): Promise<string> {
   if (!GEMINI_API_KEY) {
     throw new Error('Gemini API key not configured in environment variables');
   }
@@ -19,7 +19,7 @@ export async function generatePersonalizedMessage(profile: LinkedInProfile): Pro
   }
 }
 
-async function generateWithGeminiSDK(profile: LinkedInProfile): Promise<string> {
+async function generateWithGeminiSDK(profile: LinkedInProfile & {tones:string[]}): Promise<string> {
   const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
   
   const model = genAI.getGenerativeModel({
@@ -53,7 +53,7 @@ async function generateWithGeminiSDK(profile: LinkedInProfile): Promise<string> 
   }
 }
 
-function createPrompt(profile: LinkedInProfile): string {
+function createPrompt(profile: LinkedInProfile & {tones:string[]}): string {
   return `
     Create a personalized LinkedIn outreach message for a sales approach.
     
@@ -63,5 +63,6 @@ function createPrompt(profile: LinkedInProfile): string {
     - Company: ${profile.company}
     - Location: ${profile.location || 'Unknown'}
     - Summary: ${profile.summary || 'No summary provided'}
+    - Tones: ${profile.tones.join(', ')}
   `;
 }

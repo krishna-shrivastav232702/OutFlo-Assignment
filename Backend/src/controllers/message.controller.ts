@@ -5,7 +5,7 @@ import { generatePersonalizedMessage } from "../services/ai.js";
 
 
 export const createPersonalizedMessage = asyncHandler(async (req: Request, res: Response) => {
-    const { name, job_title, company, location, summary }: LinkedInProfile = req.body;
+    const { name, job_title, company, location, summary, tones }: LinkedInProfile & {tones:string[]}= req.body;
     if (!name || !job_title || !company) {
         res.status(400);
         throw new Error('Please provide name, job title, company');
@@ -16,7 +16,8 @@ export const createPersonalizedMessage = asyncHandler(async (req: Request, res: 
             job_title,
             company,
             location: location || '',
-            summary: summary || ''
+            summary: summary || '',
+            tones:tones || ['professional','personalized']
         });
         res.status(200).json({ message });
     } catch (error) {
