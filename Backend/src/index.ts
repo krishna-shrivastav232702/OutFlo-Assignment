@@ -4,6 +4,7 @@ import cors from "cors"
 import { connectDb } from "./db/config.js";
 import campaignRouter from "./routes/campaign.route.js";
 import messageRouter from "./routes/message.route.js";
+import leadRouter from "./routes/lead.route.js";
 
 dotenv.config();
 
@@ -19,6 +20,7 @@ app.use(cors({
 app.use(express.json());
 
 app.use('/',campaignRouter);
+app.use('/l',leadRouter);
 app.use('/messages',messageRouter);
 
 app.listen(port,() => {

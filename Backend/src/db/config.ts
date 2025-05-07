@@ -15,7 +15,7 @@ export const connectDb = async (): Promise<void> => {
     try {
         const connection = await mongoose.connect(mongoUrl);
         console.log(`Connected successfully to database :${connection.connection.host}`)
-        await scrapeLinkedinProfiles();
+        // await scrapeLinkedinProfiles();
     } catch (error: unknown) {
         if (error instanceof Error) {
             console.error(`Error connecting to database: ${error.message}`);

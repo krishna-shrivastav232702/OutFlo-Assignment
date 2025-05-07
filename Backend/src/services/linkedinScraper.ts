@@ -13,7 +13,7 @@ async function saveLeadToDatabase(leadData: any) {
             { profileUrl: leadData.profileUrl },
             leadData,
             { upsert: true, new: true }
-        );          
+        );
         console.log(`Saved lead: ${leadData.fullName}`);
     } catch (error) {
         console.error('Error saving lead:', error);
@@ -24,7 +24,7 @@ async function saveLeadToDatabase(leadData: any) {
 export async function scrapeLinkedinProfiles() {
     const browser = await chromium.launch({
         headless: false,
-        slowMo: 50
+        slowMo: 100
     });
     const context = await browser.newContext({
         userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
@@ -38,7 +38,8 @@ export async function scrapeLinkedinProfiles() {
         await page.fill("#password", process.env.LINKEDIN_PASSWORD || '');
         await page.click('button[type="submit"]');
 
-        await page.waitForLoadState('domcontentloaded');
+        await page.waitForLoadState('networkidle');
+        await page.waitForTimeout(30000);
         console.log('Logged in to LinkedIn');
 
         await sleep(3000 + Math.random() * 2000);
@@ -54,27 +55,27 @@ export async function scrapeLinkedinProfiles() {
 
         while (profilesScraped < maxProfiles) {
             console.log(`Scraping page ${pageNumber}...`);
-            const profileCards = await page.$$('.wvFcNnzPIPWjyzJBQkCMUimOgqYQIhsWxxwWI');
+            const profileCards = await page.$$('.ezgvNAwLzunClquMtsEuBTmhoWIkRCVatCPiU');
             for (const profileCard of profileCards) {
                 console.log("Inside");
                 if (profilesScraped >= maxProfiles) break;
                 try {
-                    const profileUrl = await profileCard.$eval('.npojYTzPzTWHOliEAnahXcPleomuINOXSvrw', (el) => el.getAttribute('href'));
+                    const profileUrl = await profileCard.$eval('.GqjnuldgdUvCJCSRxbdTfvlZjKVUskKYKWU', (el) => el.getAttribute('href'));
                     const completeProfileUrl = profileUrl?.startsWith('https://')
                         ? profileUrl
                         : `https://www.linkedin.com${profileUrl}`;
                     console.log("Inside try");
                     const fullName = await profileCard.$eval('span[aria-hidden="true"]', el => el.textContent?.trim() || '');
-                    console.log(fullName);    
-                    const jobTitle = await profileCard.$eval('.ghrtvjGsGSpXzeNqFurrrvkgERqSrMogoXIg', el => el.textContent?.trim() || '');
-                    console.log(jobTitle);    
+                    console.log(fullName);
+                    const jobTitle = await profileCard.$eval('.ifEPMbUmGbHtpxwohpzVTSECGDpLKliMrEScqQ', el => el.textContent?.trim() || '');
+                    console.log(jobTitle);
                     const secondaryInfo = await profileCard.$eval('.entity-result__summary--2-lines',
                         el => el.textContent?.trim() || '');
-                    console.log("Inside secondaryInfo");    
+                    console.log("Inside secondaryInfo");
                     let companyName = secondaryInfo;
                     let location = '';
                     try {
-                        location = await profileCard.$eval('.CZXXgQhtNqldQDpUaXlwvuxdXRwnOLnsSA',
+                        location = await profileCard.$eval('.GhUMSQZHSipTWCqKTeXsZvitdVbNQbnsccA',
                             el => el.textContent?.trim() || '');
                     } catch (e) {
                         const parts = secondaryInfo.split(' · ');

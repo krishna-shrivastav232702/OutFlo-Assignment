@@ -12,6 +12,7 @@ import NewCampaign from "@/Dashboard/NewCampaign";
 import Home from "@/Landing/Home";
 import UseCases from "@/Landing/UseCases";
 import Contact from "@/Landing/Contact";
+import LeadsPage from "@/Lead/LeadsPage";
 
 const campaignLoader = async ({ params }: LoaderFunctionArgs) => {
     try {
@@ -73,6 +74,10 @@ const Router = createBrowserRouter([
                     {
                         path: "/dashboard/campaigns/new",
                         element: <NewCampaign />,
+                    },
+                    {
+                        path: "/dashboard/leads",
+                        element: <LeadsPage />,
                     }
                 ]
             },

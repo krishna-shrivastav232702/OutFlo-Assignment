@@ -74,6 +74,13 @@ export default function Sidebar() {
               isCollapsed={isCollapsed}
               isActive={isActive("/linkedin-message")}
             />
+            <NavLink
+              to="/dashboard/leads"
+              icon={MessageSquareMore}
+              title="Leads"
+              isCollapsed={isCollapsed}
+              isActive={isActive("/leads")}
+            />
           </div>
         </div>
       </div>
