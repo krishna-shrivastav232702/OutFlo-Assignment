@@ -36,7 +36,7 @@ export default function LeadsPage() {
     try {
       setIsLoading(true);
       const response = await axios.get(
-        `http://localhost:8002/l/leads?page=${currentPage}&limit=${itemsPerPage}`
+        `https://outflo-assignment-production.up.railway.app/l/leads?page=${currentPage}&limit=${itemsPerPage}`
       );
 
       if (response.status !== 200) {
@@ -61,7 +61,7 @@ export default function LeadsPage() {
     setIsLoading(true)
 
     try {
-      const response = await fetch(`/api/leads/search?url=${encodeURIComponent(searchUrl)}`)
+      const response = await fetch(`https://outflo-assignment-production.up.railway.app/api/leads/search?url=${encodeURIComponent(searchUrl)}`)
 
       if (!response.ok) {
         throw new Error('Search failed')
